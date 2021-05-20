@@ -81,7 +81,7 @@ while True :
         nowImg = 1 if nowImg == 4 else nowImg + 1
 
     # 模糊數據取得
-    blurNum = getNumber()
+    blurNum = getBlur(getNumber())
 
     # 非附圖片模式 模糊>70 開啟副圖片
     if (isSubImg == False):
