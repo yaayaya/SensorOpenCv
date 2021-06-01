@@ -4,44 +4,44 @@ import time , threading
 import random
 from datetime import datetime
 
-# import qwiic
+import qwiic
 
 
-# print("VL53L1X Qwiic Test\n")
-# ToF = qwiic.QwiicVL53L1X()
-# if (ToF.sensor_init() == None): # Begin returns 0 on a good init
-#     print("Sensor online!\n")
-# distance = 0
-# def get_distance():
-#     global distance
-#     try:
-#         ToF.start_ranging() # Write configuration bytes to initiate measurement
-#         time.sleep(.03)
-#         distance = ToF.get_distance()# Get the result of the measurement from the sensor
-#         time.sleep(.03)
-#         ToF.stop_ranging()
-#         return distance
-#         # print("Distance(mm): %s" % (distance))
-#     except Exception as e:
-#         print(e)
-#         return distance
+print("VL53L1X Qwiic Test\n")
+ToF = qwiic.QwiicVL53L1X()
+if (ToF.sensor_init() == None): # Begin returns 0 on a good init
+    print("Sensor online!\n")
+distance = 0
+def get_distance():
+    global distance
+    try:
+        ToF.start_ranging() # Write configuration bytes to initiate measurement
+        time.sleep(.03)
+        distance = ToF.get_distance()# Get the result of the measurement from the sensor
+        time.sleep(.03)
+        ToF.stop_ranging()
+        return distance
+        # print("Distance(mm): %s" % (distance))
+    except Exception as e:
+        print(e)
+        return distance
 
 # 假資料取得
-_number = 2
-isPlus = True
+# _number = 2
+# isPlus = True
 
-def getNumber():
-    global isPlus
-    global _number
-    if (isPlus and _number <= 100):
-        _number += 1
-        if (_number >= 100):
-            isPlus = False
-    elif (not isPlus and _number > 0):
-        _number -= 1
-        if (_number <= 2):
-            isPlus = True
-    return _number
+# def getNumber():
+#     global isPlus
+#     global _number
+#     if (isPlus and _number <= 100):
+#         _number += 1
+#         if (_number >= 100):
+#             isPlus = False
+#     elif (not isPlus and _number > 0):
+#         _number -= 1
+#         if (_number <= 2):
+#             isPlus = True
+#     return _number
 
 # 設定模糊度  _d 距離(cm)
 def getBlur(_d):
@@ -63,8 +63,8 @@ def getBlur(_d):
     return _blur
 
 # 全螢幕使用
-cv.namedWindow("window", cv.WND_PROP_FULLSCREEN)
-cv.setWindowProperty("window",cv.WND_PROP_FULLSCREEN,cv.WINDOW_FULLSCREEN)
+# cv.namedWindow("window", cv.WND_PROP_FULLSCREEN)
+# cv.setWindowProperty("window",cv.WND_PROP_FULLSCREEN,cv.WINDOW_FULLSCREEN)
 
 global startTime
 startTime = datetime.now()
@@ -81,7 +81,7 @@ while True :
         nowImg = 1 if nowImg == 4 else nowImg + 1
 
     # 模糊數據取得
-    blurNum = getBlur(getNumber())
+    blurNum = getBlur(get_distance())
 
     # 非附圖片模式 模糊>70 開啟副圖片
     if (isSubImg == False):
@@ -97,7 +97,7 @@ while True :
             isSubImg = False
             image = cv.imread(f'./static/img/{nowImg}.jpg', 1)
 
-
+    print(blurNum)
     blurNum = math.floor(blurNum)
     # 模糊設置
     dst = cv.blur(image, (blurNum,blurNum))
