@@ -76,7 +76,7 @@ isSubImg = False
 while True :
     # 換主圖片
     timeDif = datetime.now() - startTime
-    if (timeDif.seconds > 5):
+    if (timeDif.seconds > 300):
         startTime = datetime.now()
         nowImg = 1 if nowImg == 4 else nowImg + 1
 
