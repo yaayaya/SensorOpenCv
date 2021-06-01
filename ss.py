@@ -88,14 +88,14 @@ while True :
         if blurNum > 70 :
             isSubImg = True
             subImg = random.randint(1,4)
-            image = cv.imread(f'./static/img/s{subImg}.jpg', 1)
+            image = cv.imread(f'/home/pi/Desktop/SensorOpenCv/static/img/s{subImg}.jpg', 1)
         else:
-            image = cv.imread(f'./static/img/{nowImg}.jpg', 1)
+            image = cv.imread(f'/home/pi/Desktop/SensorOpenCv/static/img/{nowImg}.jpg', 1)
     # 副圖片模式時 模糊小於70 回歸主圖片
     else:
         if (blurNum <= 70 ):
             isSubImg = False
-            image = cv.imread(f'./static/img/{nowImg}.jpg', 1)
+            image = cv.imread(f'/home/pi/Desktop/SensorOpenCv/static/img/{nowImg}.jpg', 1)
 
     if (blurNum < 1):
         blurNum = 1
