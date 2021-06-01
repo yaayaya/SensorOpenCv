@@ -45,7 +45,7 @@ def get_distance():
 
 # 設定模糊度  _d 距離(cm)
 def getBlur(_d):
-    _blur = 0
+    _blur = 1
     if (_d  <= 20):
         _blur  = 100
     elif (_d  > 20 and _d  <= 40 ):
@@ -59,7 +59,7 @@ def getBlur(_d):
     elif(_d  > 130 and _d  <= 150) :
         _blur  = 5 - ((1/4)*(_d -130))
     else :
-        _blur = 0
+        _blur = 1
     return _blur
 
 # 全螢幕使用
