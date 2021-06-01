@@ -97,6 +97,8 @@ while True :
             isSubImg = False
             image = cv.imread(f'./static/img/{nowImg}.jpg', 1)
 
+    if (blurNum < 1):
+        blurNum = 1
     print(blurNum)
     blurNum = math.floor(blurNum)
     # 模糊設置
