@@ -20,11 +20,11 @@ def get_distance():
         distance = ToF.get_distance()# Get the result of the measurement from the sensor
         time.sleep(.03)
         ToF.stop_ranging()
-        return distance
+        return distance * 5
         # print("Distance(mm): %s" % (distance))
     except Exception as e:
         print(e)
-        return distance
+        return distance * 5
 
 # 假資料取得
 # _number = 2
