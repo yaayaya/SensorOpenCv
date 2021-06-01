@@ -1,5 +1,5 @@
 import cv2 as cv
-import numpy as np
+import math
 import time , threading
 import random
 from datetime import datetime
@@ -63,8 +63,8 @@ def getBlur(_d):
     return _blur
 
 # 全螢幕使用
-# cv.namedWindow("window", cv.WND_PROP_FULLSCREEN)
-# cv.setWindowProperty("window",cv.WND_PROP_FULLSCREEN,cv.WINDOW_FULLSCREEN)
+cv.namedWindow("window", cv.WND_PROP_FULLSCREEN)
+cv.setWindowProperty("window",cv.WND_PROP_FULLSCREEN,cv.WINDOW_FULLSCREEN)
 
 global startTime
 startTime = datetime.now()
@@ -98,7 +98,7 @@ while True :
             image = cv.imread(f'./static/img/{nowImg}.jpg', 1)
 
 
-    print(blurNum)
+    blurNum = math.floor(blurNum)
     # 模糊設置
     dst = cv.blur(image, (blurNum,blurNum))
     # 圖片刷新於window視窗上
