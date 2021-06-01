@@ -63,8 +63,8 @@ def getBlur(_d):
     return _blur
 
 # 全螢幕使用
-# cv.namedWindow("window", cv.WND_PROP_FULLSCREEN)
-# cv.setWindowProperty("window",cv.WND_PROP_FULLSCREEN,cv.WINDOW_FULLSCREEN)
+cv.namedWindow("window", cv.WND_PROP_FULLSCREEN)
+cv.setWindowProperty("window",cv.WND_PROP_FULLSCREEN,cv.WINDOW_FULLSCREEN)
 
 global startTime
 startTime = datetime.now()
