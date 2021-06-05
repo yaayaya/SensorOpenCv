@@ -30,7 +30,7 @@ def get_distance():
 # _number = 2
 # isPlus = True
 
-# def getNumber():
+# def get_distance():
 #     global isPlus
 #     global _number
 #     if (isPlus and _number <= 100):
@@ -42,6 +42,7 @@ def get_distance():
 #         if (_number <= 2):
 #             isPlus = True
 #     return _number
+
 
 # 設定模糊度  _d 距離(cm)
 def getBlur(_d):
@@ -87,8 +88,7 @@ while True :
     if (isSubImg == False):
         if blurNum > 70 :
             isSubImg = True
-            subImg = random.randint(1,4)
-            image = cv.imread(f'/home/pi/Desktop/SensorOpenCv/static/img/s{subImg}.jpg', 1)
+            image = cv.imread(f'/home/pi/Desktop/SensorOpenCv/static/img/s{nowImg}.jpg', 1)
         else:
             image = cv.imread(f'/home/pi/Desktop/SensorOpenCv/static/img/{nowImg}.jpg', 1)
     # 副圖片模式時 模糊小於70 回歸主圖片
